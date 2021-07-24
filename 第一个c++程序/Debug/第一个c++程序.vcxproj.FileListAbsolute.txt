@@ -1,0 +1,2 @@
+E:\Codefield\c-\第一个c++程序\Debug\第一个c++程序.exe
+E:\Codefield\c-\第一个c++程序\Debug\第一个c++程序.pdb
