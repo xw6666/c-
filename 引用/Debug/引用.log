@@ -1,0 +1,3 @@
+﻿  test.cpp
+E:\Codefield\c-\引用\test.cpp(73): warning C4172: 返回局部变量或临时变量的地址: a
+  引用.vcxproj -> E:\Codefield\c-\引用\Debug\引用.exe
