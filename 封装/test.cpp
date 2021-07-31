@@ -235,16 +235,22 @@ using namespace std;
 //设计一个立方体类，求出立方体面积和体积
 //分别用全局函数和成员函数判断两个立方体是否相等
 
-bool isSame(const Cube& c1, const Cube& c2)
-{
-
-}
 
 class Cube
 {
 public:
 
 	//行为
+	//判断是否相等
+	bool isSameByClass(Cube& c)
+	{
+		if (c.getL() == m_l && c.getH() == m_h && c.getW() == m_w)
+		{
+			return true;
+		}
+
+		return false;
+	}
 	//设置长宽高
 	void setLWH(int l, int w, int h)
 	{
@@ -283,6 +289,17 @@ private:
 };
 
 
+//利用全局函数判断两个立方体是否相等
+bool isSame(Cube& c1, Cube& c2)
+{
+	if (c1.getL() == c2.getL() && c1.getH() == c2.getH() && c1.getW() == c2.getW())
+	{
+		return true;
+	}
+
+	return false;
+}
+
 int main()
 {
 	Cube cube2;
@@ -296,6 +313,24 @@ int main()
 	Cube cube1;
 	cube1.setLWH(1, 2, 3);
 
+	//全局函数判断
+	if (isSame(cube1, cube2))
+	{
+		cout << "Same." << endl;
+	}
+	else
+	{
+		cout << "Not same." << endl;
+	}
 
+	int ret = cube1.isSameByClass(cube2);
+	if (ret)
+	{
+		cout << "Same." << endl;
+	}
+	else
+	{
+		cout << "Not same." << endl;
+	}
 	return 0;
 }
