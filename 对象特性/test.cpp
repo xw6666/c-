@@ -144,20 +144,44 @@ using namespace std;
 //
 
 
-
-//构造函数的调用规则
-//默认情况下，C艹至少给一个类添加3个函数
-//1.默认构造函数（无参，函数体为空）
-//2.默认析构函数（无参，函数体为空）
-//3.默认拷贝函数，对属性进行值拷贝
-
-
-//构造函数调用规则
-//如果用户定义有参构造函数，c++不再提供默认构造，但是会提供拷贝构造
-//如果用户定义拷贝构造函数，c++不再提供其他构造函数
-
 class Person
 {
 public:
-	
+	//默认构造
+	Person()
+	{
+		cout << "Person的默认构造调用" << endl;
+	}
+	//有参构造
+	Person(int age)
+	{
+		m_age = age;
+		cout << "Person的有参构造调用" << endl;
+	}
+	//拷贝构造
+	Person(const Person& p)
+	{
+		m_age = p.m_age;
+		cout << "Person的拷贝构造调用" << endl;
+	}
+	~Person()
+	{
+		cout << "Person的析构函数调用" << endl; 
+	}
+
+	int m_age;
 };
+
+void test1()
+{
+	Person p1(20);
+	Person p2(p1);
+	cout << "p2的年龄为：" << p2.m_age << endl;
+}
+
+int main()
+{
+	test1();
+	system("pause");
+	return 0;
+}
