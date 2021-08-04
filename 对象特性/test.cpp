@@ -144,37 +144,149 @@ using namespace std;
 //
 
 
+//class Person
+//{
+//public:
+//	//默认构造
+//	Person()
+//	{
+//		cout << "Person的默认构造调用" << endl;
+//	}
+//	//有参构造
+//	Person(int age)
+//	{
+//		m_age = age;
+//		cout << "Person的有参构造调用" << endl;
+//	}
+//	//拷贝构造
+//	Person(const Person& p)
+//	{
+//		m_age = p.m_age;
+//		cout << "Person的拷贝构造调用" << endl;
+//	}
+//	~Person()
+//	{
+//		cout << "Person的析构函数调用" << endl; 
+//	}
+//
+//	int m_age;
+//};
+//
+//void test1()
+//{
+//	Person p1(20);
+//	Person p2(p1);
+//	cout << "p2的年龄为：" << p2.m_age << endl;
+//}
+//
+//int main()
+//{
+//	test1();
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//拷贝函数调用时机
+//class Person
+//{
+//public:
+//	Person()
+//	{
+//		cout << "Person的默认构造函数调用" << endl;
+//	}
+//	
+//	Person(int age)
+//	{
+//		m_age = age;
+//		cout << "Person的有参构造函数调用" << endl;
+//	}
+//
+//	Person(const Person& const p)
+//	{
+//		m_age = p.m_age;
+//		cout << "Person的拷贝构造函数调用" << endl;
+//	}
+//	~Person()
+//	{
+//		cout << "Person的析构函数调用" << endl;
+//	}
+//
+//
+//	int m_age;
+//};
+//
+//void test1()
+//{
+//	//直接使用拷贝构造
+//	Person p1(10);
+//	Person p2(p1);
+//}
+//
+//void test2(Person p)
+//{
+//	//传值的时候
+//}
+//
+//Person test3()
+//{
+//	Person p(10);
+//	return p;
+//}
+//
+//int main()
+//{
+//	//test1();
+//	//Person p1;
+//	test3();
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+//构造函数调用规则
+//1.创建一个类，c++会给每个编译器添加至少3个函数
+//默认函数(空实现)
+//析构函数(空实现)
+//拷贝函数(值拷贝)
+
+
+//2.如果写了有参构造，c++不再提供默认构造，但是会提供拷贝构造
 class Person
 {
 public:
-	//默认构造
 	Person()
 	{
-		cout << "Person的默认构造调用" << endl;
+		cout << "Person的默认构造函数调用" << endl;
 	}
-	//有参构造
+	
 	Person(int age)
 	{
 		m_age = age;
-		cout << "Person的有参构造调用" << endl;
+		cout << "Person的有参构造函数调用" << endl;
 	}
-	//拷贝构造
+
 	Person(const Person& p)
 	{
 		m_age = p.m_age;
-		cout << "Person的拷贝构造调用" << endl;
+		cout << "Person的拷贝构造函数调用" << endl;
 	}
-	~Person()
-	{
-		cout << "Person的析构函数调用" << endl; 
-	}
+	//~Person()
+	//{
+	//	cout << "Person的析构函数调用" << endl;
+	//}
+
 
 	int m_age;
 };
 
 void test1()
 {
-	Person p1(20);
+	Person p1;
+	p1.m_age = 20;
 	Person p2(p1);
 	cout << "p2的年龄为：" << p2.m_age << endl;
 }
