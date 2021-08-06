@@ -501,3 +501,79 @@ using namespace std;
 //}
 
 //this指针
+
+//1.防止重名
+//class Person
+//{
+//public:
+//	Person()
+//	{
+//
+//	}
+//	Person(const Person& p)
+//	{
+//		age = p.age;
+//	}
+//	void setAge(int age)
+//	{
+//		//this指向该对象中的成员变量
+//		this->age = age;
+//	}
+//	//注意用*this返回一定是引用
+//	Person& addAge(Person& p)
+//	{
+//		age += p.age;
+//
+//		return *this;
+//	}
+//
+//	int age;
+//};
+//
+//int main()
+//{
+//	Person p1;
+//	p1.setAge(10);
+//	Person p2;
+//	p2.setAge(10);
+//
+//	p2.addAge(p1).addAge(p1).addAge(p1).addAge(p1);
+//	cout << p2.age << endl;
+//	return 0;
+//}
+
+
+
+
+//空指针访问成员函数
+//注意函数体内部是否用到this
+
+//class Person
+//{
+//public:
+//	void showClassName()
+//	{
+//		cout << "This is Person class" << endl;
+//	}
+//
+//	void showPersonAge()
+//	{
+//		//当次对象为空，没有可以访问的成员变量
+//		if (this == NULL)
+//		{
+//			return;
+//		}
+//		cout << "age = " << m_age << endl;
+//	}
+//
+//	int m_age;
+//};
+//
+//int main()
+//{
+//	Person* p = NULL;
+//	p->showClassName();
+//	p->showPersonAge();
+//	return 0;
+//}
+
