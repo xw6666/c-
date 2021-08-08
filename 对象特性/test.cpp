@@ -577,3 +577,29 @@ using namespace std;
 //	return 0;
 //}
 
+class Person
+{
+public:
+	
+	void print() const
+	{
+		cout << "Hello" << endl;
+		cout << m_A << endl;
+		//m_A = 10;   //m_A不可以修改，因为const修饰了print
+		m_B = 100;  //成员属性用mutable修饰以后即可修改
+
+		//注意常对象只能调用常函数
+		//因为常对象不允许修改属性，如果能调用普通函数，就可以通过普通函数修改属性
+	}
+
+
+	int m_A;
+	mutable int m_B;
+};
+
+//int Person::m_A = 0;
+
+int main()
+{
+	return 0;
+}
