@@ -577,29 +577,78 @@ using namespace std;
 //	return 0;
 //}
 
+//class Person
+//{
+//public:
+//	
+//	void print() const
+//	{
+//		cout << "Hello" << endl;
+//		cout << m_A << endl;
+//		//m_A = 10;   //m_A不可以修改，因为const修饰了print
+//		m_B = 100;  //成员属性用mutable修饰以后即可修改
+//
+//		//注意常对象只能调用常函数
+//		//因为常对象不允许修改属性，如果能调用普通函数，就可以通过普通函数修改属性
+//	}
+//
+//
+//	int m_A;
+//	mutable int m_B;
+//};
+//
+////int Person::m_A = 0;
+//
+//int main()
+//{
+//	return 0;
+//}
+
+
+//一个人类
 class Person
 {
 public:
-	
-	void print() const
+	//构造函数
+	Person()
 	{
-		cout << "Hello" << endl;
-		cout << m_A << endl;
-		//m_A = 10;   //m_A不可以修改，因为const修饰了print
-		m_B = 100;  //成员属性用mutable修饰以后即可修改
+		money = 0;//初始化人的钱为0
+	}
+	
+	//查看现有的钱
+	int showMoney()
+	{
+		return money;
+	}
 
-		//注意常对象只能调用常函数
-		//因为常对象不允许修改属性，如果能调用普通函数，就可以通过普通函数修改属性
+	//设置钱
+	void setMoney(int money)
+	{
+		this->money = money;
+	}
+
+	//赚钱
+	Person& earnMoney()
+	{
+		money += money;
+
+		return *this;
 	}
 
 
-	int m_A;
-	mutable int m_B;
+private:
+	int money; //人的钱
 };
-
-//int Person::m_A = 0;
 
 int main()
 {
+	Person p1;
+	p1.setMoney(50);
+	cout << "p1的财产为" << p1.showMoney() << "元" << endl;
+
+	//连续调用赚钱函数
+	p1.earnMoney().earnMoney().earnMoney().earnMoney().earnMoney();
+	cout << "p1的财产为" << p1.showMoney() << "元" << endl;
+
 	return 0;
 }
