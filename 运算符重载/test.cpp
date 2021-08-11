@@ -307,3 +307,36 @@ using namespace std;
 
 
 //函数调用操作符重载
+class Print
+{
+public:
+	void operator()(string str);
+};
+
+void Print::operator()(string str)
+{
+	cout << str << endl;
+}
+
+class Add
+{
+public:
+	int operator()(int a, int b);
+};
+
+int Add::operator()(int a, int b)
+{
+	return a + b;
+}
+
+int main()
+{
+	//仿函数
+	Print print;
+	print("Hello world");
+
+	//匿名对象函数  类名+() == 匿名对象
+	cout << Add()(10, 20) << endl;
+
+	return 0;
+}
