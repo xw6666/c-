@@ -369,53 +369,73 @@ private:
 
 
 //菱形继承
-class Animal
-{
-public:
-	Animal()
-	{
-		m_Age = 18;
-	}
-	int m_Age;
-};
+//class Animal
+//{
+//public:
+//	Animal()
+//	{
+//		m_Age = 18;
+//	}
+//	int m_Age;
+//};
+//
+//class Sheep : virtual public Animal
+//{
+//public:
+//	Sheep()
+//	{
+//		m_Age = 18;
+//	}
+//};
+//
+//class Camel : virtual public Animal
+//{
+//public:
+//	Camel()
+//	{
+//		m_Age = 20;
+//	}
+//};
+//
+////这时候通过虚继承方式解决菱形问题
+////继承时使用virtual关键字修饰
+////Animal类此时称为虚基类
+//class SheepCamel : public Sheep, public Camel
+//{
+//public:
+//	SheepCamel()
+//	{
+//		//这时候我们继承了两个相同的属性，但是我们只需要一个岁数属性就行了
+//		//Camel::m_Age = 25;
+//		//Sheep::m_Age = 25;
+//
+//		//继承Animal时Animal被virtual修饰过后
+//		m_Age = 25;  //成功 - 本质是因为virtual继承的时候属性用的是指针
+//		//通过菱形继承回来时，m_Age指向的是同一个属性，没有二义性
+//	}
+//};
 
-class Sheep : virtual public Animal
-{
-public:
-	Sheep()
-	{
-		m_Age = 18;
-	}
-};
-
-class Camel : virtual public Animal
-{
-public:
-	Camel()
-	{
-		m_Age = 20;
-	}
-};
-
-//这时候通过虚继承方式解决菱形问题
-//继承时使用virtual关键字修饰
-//Animal类此时称为虚基类
-class SheepCamel : public Sheep, public Camel
-{
-public:
-	SheepCamel()
-	{
-		//这时候我们继承了两个相同的属性，但是我们只需要一个岁数属性就行了
-		//Camel::m_Age = 25;
-		//Sheep::m_Age = 25;
-
-		//继承Animal时Animal被virtual修饰过后
-		m_Age = 25;  //成功 - 本质是因为virtual继承的时候属性用的是指针
-		//通过菱形继承回来时，m_Age指向的是同一个属性，没有二义性
-	}
-};
-
-int main()
-{
-	return 0;
-}
+//class Dad
+//{
+//public:
+//	Dad()
+//	{
+//		m_A = 10;
+//	}
+//	int  m_A;
+//};
+//
+//class Son : public Dad
+//{
+//public:
+//	int m_B;
+//};
+//
+//int main()
+//{
+//	Son son;
+//	son.m_B = 20;
+//	cout << son.m_A << endl;
+//	cout << son.m_B << endl;
+//	return 0;
+//}
