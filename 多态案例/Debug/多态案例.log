@@ -1,3 +1,2 @@
 ﻿  test.cpp
-E:\Codefield\c-\多态案例\test.cpp(28): warning C4715: “Caculator::getResult”: 不是所有的控件路径都返回值
   多态案例.vcxproj -> E:\Codefield\c-\多态案例\Debug\多态案例.exe
