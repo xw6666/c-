@@ -131,54 +131,55 @@ using namespace std;
 //}
 
 
-//class Animal
-//{
-//public:
-//	Animal()
-//	{
-//		cout << "Animal的构造函数调用" << endl;
-//	}
-//	virtual ~Animal()
-//	{
-//		cout << "Animal的析构函数调用" << endl;
-//	}
-//	virtual void speak() = 0;
-//};
-//
-//class Dog : public Animal
-//{
-//public:
-//	Dog(string name)
-//	{
-//		m_Name = new string(name);
-//		cout << "Dog的构造函数调用" << endl;
-//	}
-//	~Dog()
-//	{
-//		if (m_Name)
-//		{
-//			delete m_Name;
-//			m_Name = NULL;
-//		}
-//		cout << "Dog的析构函数调用" << endl;
-//	}
-//	virtual void speak()
-//	{
-//		cout << "汪汪汪" << endl;
-//	}
-//	string* m_Name;
-//};
-//
-//void test1()
-//{
-//	//父类指针指向子类对象
-//	Animal* dog = new Dog("Tom");
-//	delete dog;
-//	dog = NULL;
-//}
-//
-//int main()
-//{
-//	test1();
-//	return 0;
-//}
+class Animal
+{
+public:
+	Animal()
+	{
+		cout << "Animal的构造函数调用" << endl;
+	}
+	~Animal()
+	{
+		cout << "Animal的析构函数调用" << endl;
+	}
+	virtual void speak() = 0;
+};
+
+class Dog : public Animal
+{
+public:
+	Dog(string name)
+	{
+		m_Name = new string(name);
+		cout << "Dog的构造函数调用" << endl;
+	}
+	~Dog()
+	{
+		if (m_Name)
+		{
+			delete m_Name;
+			m_Name = NULL;
+		}
+		cout << "Dog的析构函数调用" << endl;
+	}
+	virtual void speak()
+	{
+		cout << "汪汪汪" << endl;
+	}
+	string* m_Name;
+};
+
+void test1()
+{
+	//父类指针指向子类对象
+	Animal* dog = new Dog("Tom");
+	dog->speak();
+	delete (Dog*)dog;
+	dog = NULL;
+}
+
+int main()
+{
+	test1();
+	return 0;
+}
