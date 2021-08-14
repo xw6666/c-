@@ -103,7 +103,82 @@ using namespace std;
 
 
 //纯虚函数和抽象类
-int main()
-{
-	return 0;
-}
+//class Dad
+//{
+//public:
+//	//纯虚函数
+//	//当一个类中出现了纯虚函数，该类被称为抽象类
+//	//抽象类无法被实例化
+//	//如果派生类中没有对纯虚函数进行重写，那么该类也是抽象类
+//	virtual void func() = 0;
+//};
+//
+//class Son : public Dad
+//{
+//public:
+//	void func()
+//	{
+//		cout << "Son的func的调用" << endl;
+//	}
+//};
+//
+//
+//int main()
+//{
+//	Son son;
+//	son.func();
+//	return 0;
+//}
+
+
+//class Animal
+//{
+//public:
+//	Animal()
+//	{
+//		cout << "Animal的构造函数调用" << endl;
+//	}
+//	virtual ~Animal()
+//	{
+//		cout << "Animal的析构函数调用" << endl;
+//	}
+//	virtual void speak() = 0;
+//};
+//
+//class Dog : public Animal
+//{
+//public:
+//	Dog(string name)
+//	{
+//		m_Name = new string(name);
+//		cout << "Dog的构造函数调用" << endl;
+//	}
+//	~Dog()
+//	{
+//		if (m_Name)
+//		{
+//			delete m_Name;
+//			m_Name = NULL;
+//		}
+//		cout << "Dog的析构函数调用" << endl;
+//	}
+//	virtual void speak()
+//	{
+//		cout << "汪汪汪" << endl;
+//	}
+//	string* m_Name;
+//};
+//
+//void test1()
+//{
+//	//父类指针指向子类对象
+//	Animal* dog = new Dog("Tom");
+//	delete dog;
+//	dog = NULL;
+//}
+//
+//int main()
+//{
+//	test1();
+//	return 0;
+//}
