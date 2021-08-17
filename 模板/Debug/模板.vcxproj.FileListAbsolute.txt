@@ -1,0 +1,2 @@
+E:\Codefield\c-\模板\Debug\模板.exe
+E:\Codefield\c-\模板\Debug\模板.pdb
