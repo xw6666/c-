@@ -1,4 +1,2 @@
 ﻿  test.cpp
-E:\Codefield\c-\Vector\test.cpp(15,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\Codefield\c-\Vector\test.cpp(22,20): warning C4018: “<”: 有符号/无符号不匹配
   Vector.vcxproj -> E:\Codefield\c-\Vector\Debug\Vector.exe

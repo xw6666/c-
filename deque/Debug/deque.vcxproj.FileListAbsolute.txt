@@ -1,0 +1,2 @@
+E:\Codefield\c-\deque\Debug\deque.exe
+E:\Codefield\c-\deque\Debug\deque.pdb

@@ -1,0 +1,3 @@
+﻿  test.cpp
+E:\Codefield\c-\deque\test.cpp(75,20): warning C4018: “<”: 有符号/无符号不匹配
+  deque.vcxproj -> E:\Codefield\c-\deque\Debug\deque.exe
