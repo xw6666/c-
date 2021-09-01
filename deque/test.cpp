@@ -1,7 +1,8 @@
-//#include <iostream>
-//using namespace std;
-//#include <deque>   //双端数组
-//#include <algorithm>
+#include <iostream>
+using namespace std;
+#include <deque>   //双端数组
+#include <algorithm>
+#include <vector>
 
 //template <class T>
 //void printDeque(const deque<T>& d)
@@ -124,3 +125,71 @@
 //	return 0;
 //} 
 
+
+//STL实例
+//选手评分
+//通过vector存储5个选手
+//通过for循环遍历vector
+//通过deque容器存储每个评委打的五个分
+//对五个分去掉最高分，去掉最低分后求平均分
+//将平均分存入选手的成绩中
+class Person
+{
+public:
+	Person(string name, double score)
+	{
+		m_name = name;
+		m_score = score;
+	}
+
+	string m_name;
+	double m_score;
+};
+
+
+int main()
+{
+	vector<Person> pvec;
+	Person p1("a", 0);
+	Person p2("b", 0);
+	Person p3("c", 0);
+	Person p4("d", 0);
+	Person p5("e", 0);
+	
+	pvec.push_back(p1);
+	pvec.push_back(p2);
+	pvec.push_back(p3);
+	pvec.push_back(p4);
+	pvec.push_back(p5);
+
+
+	for (vector<Person>::iterator it1 = pvec.begin(); it1 != pvec.end(); it1++)
+	{
+		double score = 0.0;
+		double temp = 0.0;
+		deque<double> d;
+		for (int j = 0; j < 5; j++)
+		{
+			cin >> temp;
+			d.push_back(temp);
+		}
+
+		//排序
+		sort(d.begin(), d.end());
+		for (auto it2 = d.begin() + 1; it2 != d.end() - 1; it2++)
+		{
+			score += (*it2);
+		}
+
+		score = score / (d.size() - 2);
+		(*it1).m_score = score;
+	}
+
+
+	for (auto i = pvec.begin(); i != pvec.end(); i++)
+	{
+		cout << (*i).m_name << " " << (*i).m_score << endl;
+	}
+
+	return 0;
+}

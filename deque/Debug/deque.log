@@ -1,5 +1,2 @@
-﻿  bubbleSort.cpp
-E:\Codefield\c-\deque\bubbleSort.cpp(32,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\Codefield\c-\deque\bubbleSort.cpp(43,16): warning C4018: “<”: 有符号/无符号不匹配
-E:\Codefield\c-\deque\bubbleSort.cpp(47,17): warning C4018: “<”: 有符号/无符号不匹配
+﻿  test.cpp
   deque.vcxproj -> E:\Codefield\c-\deque\Debug\deque.exe
