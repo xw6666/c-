@@ -1,2 +1,3 @@
 ﻿  test.cpp
+E:\Codefield\c-\stack\test.cpp(46,21): warning C4018: “<”: 有符号/无符号不匹配
   stack.vcxproj -> E:\Codefield\c-\stack\Debug\stack.exe
