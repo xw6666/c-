@@ -1,0 +1,2 @@
+E:\Codefield\c-\stack\Debug\stack.exe
+E:\Codefield\c-\stack\Debug\stack.pdb
