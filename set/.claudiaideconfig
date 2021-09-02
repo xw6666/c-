@@ -1,0 +1,22 @@
+﻿{
+  "BackgroundImageAbsolutePath": "C:\\Users\\晓伍\\Pictures\\Saved Pictures\\v2-79e87d5bf57e54aa5509402328561aeb_r.jpg",
+  "BackgroundImagesDirectoryAbsolutePath": "C:\\Users\\晓伍\\Pictures\\Saved Pictures",
+  "ExpandToIDE": true,
+  "Extensions": ".png, .jpg, .gif, .bmp",
+  "ImageBackgroundType": 0,
+  "ImageFadeAnimationInterval": "PT0S",
+  "ImageStretch": 3,
+  "IsLimitToMainlyEditorWindow": false,
+  "LoopSlideshow": false,
+  "MaxHeight": 0,
+  "MaxWidth": 0,
+  "Opacity": 0.3,
+  "PositionHorizon": 1,
+  "PositionVertical": 1,
+  "ShuffleSlideshow": false,
+  "SoftEdgeX": 0,
+  "SoftEdgeY": 0,
+  "UpdateImageInterval": "PT1M",
+  "ViewBoxPointX": 0,
+  "ViewBoxPointY": 0
+}
