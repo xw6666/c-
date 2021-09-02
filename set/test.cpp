@@ -106,10 +106,67 @@ void test4()
 	}
 }
 
-//set的查找
+//set的查找与统计
 void test5()
 {
 	//find(elem) - 查找容器中为elem的元素，返回它的迭代器，如果找不到，返回end();
+	set<int> s1;
+	s1.insert(10);
+	s1.insert(30);
+	s1.insert(40);
+	s1.insert(20);
+
+	printSet(s1);
+	set<int>::iterator it = s1.find(50);  //查找20，返回迭代器
+	if (it == s1.end())
+	{
+		cout << "没有找到" << endl;
+	}
+	else
+	{
+		cout << *it << endl;
+	}
+
+	//count(elem)用于记录set中elem出现的次数 - 很显然只会是1或者0
+	int num = s1.count(20);
+	cout << "num = " << num << endl;
+
+}
+
+void printMultiset(multiset<int>& ms)
+{
+	for (multiset<int>::iterator it = ms.begin(); it != ms.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+void test6()
+{
+	//set与multiset区别
+	//1.set不能插入重复数据，而multiset可以
+	//2.set插入数据时会返回结果，表示插入数据是否成功
+	//3.multiset不会对插入数据进行检测，因此可以重复插入
+	
+	multiset<int> ms;
+	ms.insert(15);
+	ms.insert(10);
+	ms.insert(20);
+	ms.insert(30);
+	printMultiset(ms);
+
+	set<int> s;
+	s.insert(10);
+	s.insert(10);
+	s.insert(20);
+	//pair<iterator, boll> - 对组
+	pair<set<int>::iterator, bool> ret = s.insert(30);
+	cout << ret.second << endl;
+	pair<set<int>::iterator, bool> ret2 = s.insert(10);
+	cout << ret2.second << endl;
+
+	printSet(s);
 
 }
 
@@ -119,6 +176,8 @@ int main()
 	//test2();
 	//test3();
 	//test4();
+	//test5(); 
+	test6();
 
 	system("pause");
 	return 0;
