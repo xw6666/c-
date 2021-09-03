@@ -170,6 +170,96 @@ void test6()
 
 }
 
+
+//对组的创建与使用
+void test7()
+{
+	//构造函数
+	pair<string, int> pa1("张三", 19);
+	cout << "姓名：" << pa1.first << " 年龄：" << pa1.second << endl;
+	//make_pair函数
+	pair<string, int> pa2 = make_pair("李四", 20);
+	cout << "姓名：" << pa2.first << " 年龄：" << pa2.second << endl;
+
+}
+
+//set容器内置类型指定排序规则排序
+template <class T>
+class MyCompare
+{
+public:
+	bool operator()(T a, T b) const   //注意const
+	{
+		return a > b;
+	}
+};
+
+void test8()
+{
+	set<int> s1;
+	s1.insert(20);
+	s1.insert(50);
+	s1.insert(30);
+	s1.insert(10);
+	s1.insert(40);
+
+	printSet(s1);   //10 20 30 40 50
+
+	set<int, MyCompare<int>> s2;
+	s2.insert(20);
+	s2.insert(50);
+	s2.insert(30);
+	s2.insert(10);
+	s2.insert(40);
+	for (set<int, MyCompare<int>>::iterator it = s2.begin(); it != s2.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+//set容器自定义类型指定排序规则排序
+class Person
+{
+
+public:
+	Person(string name, int age)
+	{
+		this->m_Age = age;
+		this->m_Name = name;
+	}
+
+	//比较操作符重载
+	bool operator>(Person& p)
+	{
+		if (this->m_Age > p.m_Age)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	string m_Name;
+	int m_Age;
+};
+
+
+void test9()
+{
+	set<Person, MyCompare<Person>> s1;
+	s1.insert(Person("张三", 20));
+	s1.insert(Person("诸葛亮", 28));
+	s1.insert(Person("张飞", 25));
+	s1.insert(Person("刘备", 27));
+	s1.insert(Person("关羽", 30));
+
+	for (set<Person, MyCompare<Person>>::iterator it = s1.begin(); it != s1.end(); it++)
+	{
+		cout << it->m_Name << " " << it->m_Age << endl;
+	}
+	cout << endl;
+}
+
 int main()
 {
 	//test1();
@@ -177,7 +267,10 @@ int main()
 	//test3();
 	//test4();
 	//test5(); 
-	test6();
+	//test6();
+	//test7();
+	//test8();
+	test9();
 
 	system("pause");
 	return 0;
