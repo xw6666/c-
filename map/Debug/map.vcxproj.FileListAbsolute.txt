@@ -1,0 +1,2 @@
+E:\Codefield\c-\map\Debug\map.exe
+E:\Codefield\c-\map\Debug\map.pdb
