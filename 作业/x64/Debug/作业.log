@@ -1,3 +1,3 @@
 ﻿  test.cpp
-E:\Codefield\c-\作业\test.cpp(501,10): warning C4101: “e”: 未引用的局部变量
+E:\Codefield\c-\作业\test.cpp(663,19): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
   作业.vcxproj -> E:\Codefield\c-\作业\x64\Debug\作业.exe

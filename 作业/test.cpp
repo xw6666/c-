@@ -618,3 +618,120 @@
 //    return 0;
 //}
 
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXSIZE 100
+
+typedef struct
+{
+    char* base;
+    char* top;
+    int size;
+}sqstack;
+
+void initstack(sqstack* s)
+{
+    s->base = (char*)malloc(MAXSIZE * sizeof(char));
+    if (s->base == NULL)
+        exit(0);
+    s->top = s->base;
+    s->size = MAXSIZE;
+}
+
+void push(sqstack* s, char e)
+{
+    if (s->top - s->base >= s->size)
+    {
+        s->base = (char*)realloc(s->base, 100);
+        if (s->base == NULL)
+            exit(0);
+        s->top = s->base + s->size;
+        s->size = s->size + 100;
+    }
+    *(s->top) = e;
+    s->top++;
+}
+
+void pop(sqstack* s, char* e)
+{
+    *e = *--(s->top);
+}
+
+int len(sqstack s)
+{
+    return (s.top - s.base);
+}
+
+
+int main()
+{
+    sqstack s;
+    char c, e;
+    initstack(&s);
+    scanf("%c", &c);
+    while (c != '\n')
+    {
+        if (c >= 'a' && c <= 'z')
+            printf("%c", c);
+        else if (')' == c)
+        {
+            pop(&s, &e);
+            while ('(' != e)
+            {
+                printf("%c", e);
+                pop(&s, &e);
+            }
+        }
+        else if ('+' == c || '-' == c)
+        {
+            if (!len(s))
+            {
+                push(&s, c);
+            }
+            else
+            {
+                do
+                {
+                    pop(&s, &e);
+                    if ('(' == e)
+                    {
+                        push(&s, e);
+                    }
+                    else
+                    {
+                        printf("%c", e);
+                    }
+                } while (len(s) && '(' != e);
+                push(&s, c);
+            }
+        }
+        else if ('(' == c)
+        {
+
+            push(&s, c);
+            
+        }
+        else if ((c == '*' || c == '/') && (*(s.top - 1) == '+' || *(s.top - 1) == '-'))
+        {
+            push(&s, c);
+        }
+        else
+        {
+            while (len(s))
+            {
+                pop(&s, &e);
+                printf("%c", e);
+            }
+            push(&s, c);
+        }
+        scanf("%c", &c);
+    }
+    while (len(s))
+    {
+        pop(&s, &e);
+        printf("%c", e);
+    }
+    return 0;
+}
+
