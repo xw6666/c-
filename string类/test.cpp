@@ -228,3 +228,53 @@ using namespace std;
 //	cout << str1 << endl;
 //	return 0;
 //}
+
+
+//rebegin 与 reend
+//int main()
+//{
+//	string s1("Hello world");
+//	string::reverse_iterator rit = s1.rbegin();
+//	while (rit != s1.rend())
+//	{
+//		cout << *rit << " ";
+//		++rit;
+//	}
+//	return 0;
+//}
+
+
+//测试增容机制
+//int main()
+//{
+//	string s;
+//	size_t sz = s.capacity();
+//	cout << "capacity = " << sz << endl;
+//
+//	for (int i = 0; i < 1000; i++)
+//	{
+//		s += 'c';
+//		if (sz != s.capacity())
+//		{
+//			sz = s.capacity();
+//			cout << "capacity = " << sz << endl;
+//		}
+//	}
+//
+//	return 0;
+//}
+
+int main()
+{
+	string file("test.txt");
+	//找到文件后缀
+	size_t pos = file.find('.');
+	if (pos != file.npos)
+	{
+		string suffix = file.substr(pos, file.size() - pos);
+		cout << suffix << endl;
+	}
+	string s("Hello world");
+	cout << s.substr(1, 6) << endl;
+	return 0;
+}
