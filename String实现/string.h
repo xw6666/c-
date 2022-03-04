@@ -11,8 +11,8 @@ namespace xw
 	class string
 	{
 	public:
-		typedef char* iterator;
-		typedef const char* const_iterator;
+		typedef char* iterator;         //迭代器
+		typedef const char* const_iterator;   //常量迭代器
 
 		const_iterator begin() const
 		{
@@ -97,26 +97,30 @@ namespace xw
 			return *this;
 		}
 
+		//返回c语言类型字符串
 		char* c_str() const
 		{
 			return _str;
 		}
-
+		
+		//返回字符个数
 		size_t size() const
 		{
 			return _size;
 		}
 
+		//[]操作符重载
 		char& operator[](size_t pos)
 		{
 			assert(pos >= 0 && pos < _size);
 			return _str[pos];
 		}
 
+		//[]操作符重载 - 对于const string使用
 		const char& operator[](size_t pos) const 
 		{
 			assert(pos >= 0 && pos < _size);
-			return _str[pos];
+			return _str[pos]; 
 		}
 
 		//扩容
@@ -133,30 +137,124 @@ namespace xw
 			}
 		}
 
+		//将字符串填充成ch，一共有n个字符
+		void resize(size_t n, char ch = '\0')
+		{
+			if (n + 1 > _capacity)
+			{
+				//把容量变成n + 1;
+				reserve(n + 1);
+
+				memset(_str + _size, ch, n - _size);
+				_size = n;
+				_str[_size] = '\0';
+			}
+			else
+			{
+				if (_size < n)
+				{
+					memset(_str + _size, ch, n - _size);
+					_size = n;
+					_str[_size] = '\0';
+				}
+				else
+				{
+					_size = n;
+					_str[_size] = '\0';
+				}
+			}
+		}
+
+		//追加字符
 		void push_back(const char ch)
 		{
 			if (_size + 1 >= _capacity)
 			{
 				//增容
+				reserve(_capacity * 2);
 			}
 			_str[_size++] = ch;
 			_str[_size] = '\0';
 		}
 
+		//追加字符串
 		void append(const char* str)
 		{
 			int len = strlen(str);
 			while (_size + len + 1 >= _capacity)
 			{
 				//增容
-				
+				reserve(_capacity * 2);
 			}
 			strcpy(_str + _size, str);
 		}
 
+		//清空字符串
+		void clear()
+		{
+			_str[0] = '\0';
+			_size = 0;
+		}
+
+		//+=操作符重载 - 复用append
 		string& operator+=(const char* str)
 		{
+			append(str);
+			return *this;
+		}
 
+		//查找字符
+		size_t find(char ch)
+		{
+			for (size_t i = 0; i != _size; i++)
+			{
+				if (ch == _str[i])
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+
+		//在pos处往后查找子串s
+		size_t find(const char* s, int pos = 0)
+		{
+			const char* ptr = strstr(_str + pos, s);
+			if (ptr == nullptr)
+			{
+				return -1;
+			}
+			return ptr - _str;
+		}
+
+		//插入一个字符 - 在pos位置插入一个字符
+		string& insert(int pos, char ch)
+		{
+			assert(pos <= _size);
+
+			//现有字符长度加一个字符加一个'\0'大于_capacity进行扩容
+			if (_size + 2 > _capacity)
+			{
+				reserve(_capacity * 2);
+			}
+			size_t i = _size + 1;
+			while (i > pos)
+			{
+				_str[i] = _str[i - 1];
+				i--;
+			}
+			_str[i] = ch;
+			_size++;
+			return *this;
+		}
+
+		string& insert(int pos, const char* s)
+		{
+			size_t len = strlen(s);
+			while (_size + len + 1 > _capacity)
+			{
+				reserve(_capacity * 2);
+			}
 		}
 
 		//析构函数
@@ -174,4 +272,5 @@ namespace xw
 		size_t _size;   //字符串大小
 		size_t _capacity;   //维护的空间的大小
 	};
+	
 }

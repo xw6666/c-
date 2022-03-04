@@ -77,9 +77,37 @@ void test6()
 	std::cout << s2.size() << '\n';
 }
 
+//À©Èİ£¬appendºÍ+=ÖØÔØ²âÊÔ
 void test7()
 {
-	
+	string s1("abc");
+	for (int i = 0; i < 10; i++)
+	{
+		s1.push_back('1');
+	}
+	std::cout << s1.c_str() << '\n';
+	s1.clear();
+	s1.append("huisdhfuisdhfuiosdhfuiowehfiuwehfwfewfwe");
+	std::cout << s1.c_str() << "\n";
+}
+
+void test8()
+{
+	string s1("ab");
+	s1.resize(100);
+
+	std::cout << s1.size() << '\n' << s1.c_str() << '\n';
+}
+
+
+//²åÈë²âÊÔ
+void test9()
+{
+	string s1("ancdsf");
+	s1.insert(6, 'v');
+	s1.insert(5, 'v');
+	s1.insert(0, 'v');
+	std::cout << s1.c_str() << '\n';
 }
 
 int main()
@@ -90,5 +118,9 @@ int main()
 	//test4();
 	//test5();
 	//test6();
+	//test7();
+	//test8();
+	test9();
+
 	return 0;
 }

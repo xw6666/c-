@@ -1,4 +1,4 @@
 ﻿  Test.cpp
-  string.h
-  正在生成代码...
+E:\Codefield\c-\String实现\string.h(233,4): warning C4018: “<=”: 有符号/无符号不匹配
+E:\Codefield\c-\String实现\string.h(241,13): warning C4018: “>”: 有符号/无符号不匹配
   String实现.vcxproj -> E:\Codefield\c-\String实现\Debug\String实现.exe
