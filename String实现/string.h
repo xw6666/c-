@@ -56,8 +56,8 @@ namespace xw
 		//拷贝构造- 现代写法
 		string(const string& s)
 			:_str(nullptr)
-			,_size(0)
-			,_capacity(0)
+			, _size(0)
+			, _capacity(0)
 		{
 			string temp(s._str);
 			std::swap(_str, temp._str);
@@ -88,10 +88,13 @@ namespace xw
 		//	}
 		//	return *this;
 		//}
-		
+
 		//赋值运算符重载 - 复用拷贝构造
 		string& operator=(string s)
 		{
+			//传入参数不加引用调用拷贝构造
+			//直接和参数进行交换
+			//由于参数是形参，出函数作用域会调用析构函数销毁，不造成内存泄漏
 			std::swap(_str, s._str);
 			std::swap(_size, s._size);
 			std::swap(_capacity, s._capacity);
@@ -103,7 +106,7 @@ namespace xw
 		{
 			return _str;
 		}
-		
+
 		//返回字符个数
 		size_t size() const
 		{
@@ -118,10 +121,10 @@ namespace xw
 		}
 
 		//[]操作符重载 - 对于const string使用
-		const char& operator[](size_t pos) const 
+		const char& operator[](size_t pos) const
 		{
 			assert(pos >= 0 && pos < _size);
-			return _str[pos]; 
+			return _str[pos];
 		}
 
 		//扩容
@@ -275,7 +278,7 @@ namespace xw
 		string& erase(size_t pos = 0, size_t len = -1)
 		{
 			assert(pos < _size);
-    			if (len == (size_t)(-1) || pos + len >= _size)
+			if (len == (size_t)(-1) || pos + len >= _size)
 			{
 				_str[pos] = '\0';
 				_size = pos;
@@ -311,7 +314,7 @@ namespace xw
 			}
 			return false;
 		}
-		
+
 		bool operator==(const string& s) const
 		{
 			size_t i = 0, j = 0;
@@ -365,27 +368,18 @@ namespace xw
 		~string()
 		{
 			delete[] _str;
-			_str = NULL;
+			_str = nullptr;
 			_size = 0;
 			_capacity = 0;
 		}
 
-
+		
 	private:
 		char* _str;   //字符串
 		size_t _size;   //字符串大小
 		size_t _capacity;   //维护的空间的大小
 	};
 
-
-	//std::ostream& operator<<(std::ostream& out, const string& s)
-	//{
-	//	for (auto e : s)
-	//	{
-	//		out << e;
-	//	}
-	//	return out;
-	//}
 	
 }
 
