@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <algorithm>
 
+
 namespace xw
 {
 	//模拟实现string增删改查
@@ -228,7 +229,7 @@ namespace xw
 		}
 
 		//插入一个字符 - 在pos位置插入一个字符
-		string& insert(int pos, char ch)
+		string& insert(size_t pos, char ch)
 		{
 			assert(pos <= _size);
 
@@ -248,13 +249,116 @@ namespace xw
 			return *this;
 		}
 
-		string& insert(int pos, const char* s)
+		string& insert(size_t pos, const char* s)
 		{
+			assert(pos <= _size);
 			size_t len = strlen(s);
 			while (_size + len + 1 > _capacity)
 			{
-				reserve(_capacity * 2);
+				reserve(_size + len + 1);
 			}
+
+			size_t i = _size + len;
+			while (i >= pos + len)
+			{
+				_str[i] = _str[i - len];
+				i--;
+			}
+			for (size_t j = pos, k = 0; k < len; j++, k++)
+			{
+				_str[j] = s[k];
+			}
+			_size += len;
+			return *this;
+		}
+
+		string& erase(size_t pos = 0, size_t len = -1)
+		{
+			assert(pos < _size);
+    			if (len == (size_t)(-1) || pos + len >= _size)
+			{
+				_str[pos] = '\0';
+				_size = pos;
+			}
+			else
+			{
+				strcpy(_str + pos, _str + pos + len);
+			}
+
+			return *this;
+		}
+
+		bool operator<(const string& s) const
+		{
+			size_t i = 0, j = 0;
+			while (i < _size && j < s.size())
+			{
+				if (_str[i] < s._str[j])
+				{
+					return true;
+				}
+				else if (_str[i] > s._str[j])
+				{
+					return false;
+				}
+				i++;
+				j++;
+			}
+
+			if (j < s.size())
+			{
+				return true;
+			}
+			return false;
+		}
+		
+		bool operator==(const string& s) const
+		{
+			size_t i = 0, j = 0;
+			while (i < _size && j < s.size())
+			{
+				if (_str[i] != s._str[j])
+				{
+					return false;
+				}
+				i++;
+				j++;
+			}
+
+			if (i == _size && j == s.size())
+			{
+				return true;
+			}
+			return false;
+		}
+
+		bool operator<=(const string& s) const
+		{
+			return (*this < s || *this == s);
+		}
+
+		bool operator>(const string& s) const
+		{
+			return !(*this <= s);
+		}
+
+		bool operator>=(const string& s)
+		{
+			return !(*this < s);
+		}
+
+		bool operator!=(const string& s)
+		{
+			return !(*this == s);
+		}
+
+		friend std::ostream& operator<<(std::ostream& out, const string& s)
+		{
+			for (size_t i = 0; i < s._size; i++)
+			{
+				out << s._str[i];
+			}
+			return out;
 		}
 
 		//析构函数
@@ -272,5 +376,19 @@ namespace xw
 		size_t _size;   //字符串大小
 		size_t _capacity;   //维护的空间的大小
 	};
+
+
+	//std::ostream& operator<<(std::ostream& out, const string& s)
+	//{
+	//	for (auto e : s)
+	//	{
+	//		out << e;
+	//	}
+	//	return out;
+	//}
 	
 }
+
+
+
+

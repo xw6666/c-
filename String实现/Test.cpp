@@ -103,11 +103,43 @@ void test8()
 //²åÈë²âÊÔ
 void test9()
 {
-	string s1("ancdsf");
-	s1.insert(6, 'v');
-	s1.insert(5, 'v');
-	s1.insert(0, 'v');
+	//string s1("ancdsf");
+	//s1.insert(6, 'v');
+	//s1.insert(5, 'v');
+	//s1.insert(0, 'v');
+	//std::cout << s1.c_str() << '\n';
+	//string s1("hids");
+	//s1.insert(2,"hello ");
+	//s1.insert(0, "hello ");
+	//s1.insert(s1.size(), "hello");
+	//std::cout << s1.c_str() << '\n';
+	string s2("hello");
+	s2.insert(5, "ab");
+	s2.insert(0, "ab");
+	s2.insert(2, " ab");
+	std::cout << s2.c_str() << '\n';
+}
+
+
+//erase²âÊÔ
+void test10()
+{
+	string s1("helloworld");
+	s1.erase(5, 2);
 	std::cout << s1.c_str() << '\n';
+	s1.erase(5, 100);
+	std::cout << s1.c_str() << '\n';
+	s1.erase(1);
+	std::cout << s1.c_str() << '\n';
+}
+
+void test11()
+{
+	xw::string s1("hello world");
+	xw::string s2("hello world");
+	std::cout << (s1 < s2) << '\n';
+	std::cout << (s1 != s2) << '\n';
+	std::cout << s1 << " " << s2 << '\n';
 }
 
 int main()
@@ -120,7 +152,8 @@ int main()
 	//test6();
 	//test7();
 	//test8();
-	test9();
-
+	//test9();
+	//test10();
+	//test11();
 	return 0;
 }
