@@ -4,7 +4,7 @@
   test.cpp
   WorkerManager.cpp
   正在生成代码
-  Previous IPDB not found, fall back to full compilation.
-  All 208 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+  All 206 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
-  职工管理系统.vcxproj -> E:\Codefield\c-\职工管理系统\Release\职工管理系统.exe
+  职工管理系统.vcxproj -> E:\code\c-\职工管理系统\Release\职工管理系统.exe

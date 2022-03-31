@@ -439,3 +439,58 @@ private:
 //	cout << son.m_B << endl;
 //	return 0;
 //}
+
+//class Person
+//{
+//
+//protected:
+//	string _name = "张三";
+//	int _num = 123;    //身份证号
+//};
+//
+////子类和父类同时出现重名成员 
+//class Student : public Person
+//{
+//public:
+//
+//	void Print()
+//	{
+//		cout << "姓名：" << _name << endl;
+//		cout << _num << endl;    //999 - 就近原则
+//		cout << Person::_num << endl;
+//	}
+//protected:
+//	int _num = 999;
+//};
+//
+//int main()
+//{
+//	Student stu1;
+//	stu1.Print();
+//	return 0;
+//}
+
+class A
+{
+public:
+	void fun()
+	{
+		cout << "func" << endl;
+	}
+};
+
+class B : public A
+{
+public:
+	void fun(int i)
+	{
+		cout << "func(int i)-> " << i << endl;
+	}
+};
+
+int main()
+{
+	B b;
+	b.fun(10);    //构成隐藏，A中的fun被隐藏
+	return 0;
+}

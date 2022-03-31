@@ -118,3 +118,67 @@ using namespace std;
 //
 //	return 0;
 //}
+
+//class ConfigManager
+//{
+//public:
+//	ConfigManager(const char* filename)
+//		:_filename(filename)
+//	{}
+//private:
+//	string _filename;
+//};
+//
+//void test1()
+//{
+//
+//}
+//
+//int main()
+//{
+//	test1();
+//	return 0;
+//}
+
+
+
+#include <iostream>
+using namespace std;
+
+
+//共用体
+//每个成员变量都从同一个地址开始存储，公用一块空间
+//假设num从0号地址开始存放，int四个字节，即0,1,2,3四个地址存放的是int
+//name是5个连续的char变量，也从0开始存放占用0，1，2，3，4五个地址空间
+//s占用0地址空间
+//共有体的大小（单位字节）一定是最大成员变量类型大小的整数倍
+//在以下结构体中，占空间最大的类型是int(char[5]本质是5个char)，所以结构体大小一定是4的整数倍
+//即4，8，12，16..由于4个字节不够装下char name[5]，所以这个结构体大小是8字节
+union stu1
+{
+	int num;
+	char name[5];
+	char s;
+};
+
+//根据上述分析，这个结构体字节大小只能是8,16,24...所以结构体大小是16字节
+union stu3
+{
+	double num;
+	char name[9];
+	char s;
+};
+
+struct stu2
+{
+	int num;
+	char name[5];
+	char s;
+};
+
+int main()
+{
+	cout << sizeof(stu2) << endl;
+	cout << sizeof(stu3) << endl;
+	return 0;
+}
